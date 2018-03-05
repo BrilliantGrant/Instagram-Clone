@@ -1,0 +1,33 @@
+{%extends 'my-inst/base.html'%} {% load bootstrap3 %}
+
+{%block content%}
+<div class="container">
+
+    <div class='col-md-6'></div>
+    <div class='col-md-8'>
+        <div class="row">
+            <div class="col-md-12 ">
+                
+            </div>
+            <div class="col-md-12">
+                {%for profile in profile%}
+                <img src={{profile.profile_pic.url}} class="img-responsive img-rounded">
+
+                <h5 style="">{{profile.username}}</h5>
+                <p>{{profile.bio}}</p>
+                {% if profile.user == current_user%}
+                <a href="{% url 'send' %}">
+                    <span class="glyphicon glyphicon-plus-sign"></span>
+                </a>
+                <h5>Followers:{{followers | length }}</h5>
+                 {% else%} <h3> No Profile </h3>
+                {%endif%}
+            </div>
+            
+            {%endfor%}
+        </div>
+
+    </div>
+    <div class='col-md-2'></div>
+</div>
+{% endblock %}

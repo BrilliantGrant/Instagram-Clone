@@ -1,0 +1,37 @@
+{% extends 'my-inst/base.html'%} {% block content %} {{block.super}}
+<i class="fa fa-instagram" aria-hidden="true"></i>
+<div class="row">
+    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+        {% if found_users %}
+        <h4>Got{{ found_users|length }} users with the names {{message}}</h2>
+            {% else %}
+            <h4> No users named {{message}}</h2>
+                {% endif %}
+    </div>
+    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+</div>
+
+<div class="row">
+    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+        <div class="row">
+            {% if found_users %} {% for found_user in found_users %}
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+
+                <a href="{% url 'single_user' found_user.id %}">
+                    <img src="{{found_user.profile_photo.url}}" class="img-responsive" alt='Image'>
+                </a>
+                <a href="{% url 'single_user' found_user.id %}">
+                    <h5>{{found_user.username}}</h5>
+                </a>
+
+            </div>
+            {% endfor %} {% endif %}
+
+        </div>
+    </div>
+    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+
+</div>
+{% endblock %}
