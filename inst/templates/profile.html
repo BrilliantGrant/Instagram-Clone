@@ -4,30 +4,46 @@
 <div class="container">
 
     <div class='col-md-6'></div>
-    <div class='col-md-8'>
+    <div class='col-md-6'>
         <div class="row">
             <div class="col-md-12 ">
                 
             </div>
             <div class="col-md-12">
                 {%for profile in profile%}
-                <img src={{profile.profile_pic.url}} class="img-responsive img-rounded">
+                <img src={{profile.profile_pic.url}} style="width: 300px; height: 300px">
 
                 <h5 style="">{{profile.username}}</h5>
                 <p>{{profile.bio}}</p>
                 {% if profile.user == current_user%}
                 <a href="{% url 'send' %}">
                     <span class="glyphicon glyphicon-plus-sign"></span>
+                 <a href="{% url 'upload_profile'%}"><button class="btn btn-primary">Make changes</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'post' %}">
+                    <span class="glyphicon glyphicon-plus-sign" style="font-size:35px;"></span>
                 </a>
-                <h5>Followers:{{followers | length }}</h5>
-                 {% else%} <h3> No Profile </h3>
-                {%endif%}
+               <a href="{% url 'upload_profile'%}"><button class="btn btn-primary">Make changes</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'post' %}">
+                    <span class="glyphicon glyphicon-plus-sign" style="font-size:35px;"></span>
+                </a>
+                <h5><span style="font-weight:bolder;"></span>{{followers | length }}</h5>
+                <h5><span</span>{{following | length }}</h5 {% else%} 
+                <a href="{% url 'upload_profile'%}"><button class="btn btn-primary" style="background-color: red">Create Profile</button></a> {% endif %}
+                <hr>
             </div>
-            
-            {%endfor%}
         </div>
 
     </div>
-    <div class='col-md-2'></div>
-</div>
-{% endblock %}
+                
+            </div>
+        </div>
+
+    </div>
+    {%endfor%}
+
+ {%endblock%} 
+
+
+
+
+

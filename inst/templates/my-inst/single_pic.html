@@ -1,0 +1,28 @@
+{%extends 'my-inst/base.html'%} {% block content %}
+
+<div class="container">
+    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+    <div class="col-xs-10 col-sm-10 col-md-5 col-lg-5 col-xl-5">
+        <div class="row">
+            <img src="{{pic.pic}}" class="img-responsive" alt="">
+        </div>
+
+    </div>
+    <div class="col-xs-10 col-sm-10 col-md-5 col-lg-5 col-xl-5">
+
+    </div>
+    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+
+
+
+    <div class="row">
+        <h1 class="text-center">{{pic.id}}</h1>
+    </div>
+
+    <div class="row">
+        <p>{{pic.bio}}</p>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -50,7 +50,7 @@ class Pic(models.Model):
 
 class Profile(models.Model):
 	username = models.CharField(default='User',max_length=30)
-	profile_pic = models.ImageField(upload_to = "pics/",null=True)
+	profile_pic = models.ImageField(upload_to = "profile/",null=True)
 	bio = models.TextField(default='',blank = True)
 	first_name = models.CharField(max_length =30)
 	last_name = models.CharField(max_length =30)
@@ -74,11 +74,10 @@ class Profile(models.Model):
 
 
 class Comment(models.Model):
-	pic = models.ForeignKey(Pic, null=True)
-	date_posted = models.DateTimeField(auto_now_add=True,null=True)
-	comment= models.TextField(max_length ='')
-	user = models.ForeignKey(User, null=True)
-
+	user_id = models.ForeignKey(User, null= True)
+	pic_id = models.ForeignKey(Pic, null= True)
+	comment= models.TextField(blank=True)
+	
 	def __str__(self):
 		return self.comment
 
