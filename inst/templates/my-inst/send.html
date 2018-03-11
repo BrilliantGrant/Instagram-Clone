@@ -1,20 +1,19 @@
 {% extends 'my-inst/base.html'%}
- {% load staticfiles%}
- {% load bootstrap3 %}
-  {% block content %}
-   {{block.super}}
+{% load staticfiles%}
+{% load bootstrap3 %}
+{% block content %}
+{{block.super}}
+
 <div class="container">
-    <div class="col-xs-0 col-sm-0 col-md-2 col-lg-2 col-xl-2"></div>
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-             {% bootstrap_form form%}
-            <input type="submit" class="btn btn-primary btn-sm" value="Submit">
-            <input type="hidden" name="next" value="{{next}}">
-
-        </form>
-    </div>
-    <div class="col-xs-0 col-sm-0 col-md-4 col-lg-4 col-xl-4"></div>
-
+<div class="col-md-3"></div>
+<div class="col-md-3">
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{% bootstrap_form form%}
+<input type="submit" class="btn btn-primary btn-sm" value="Submit">
+<input type="hidden" name="next" value="{{next}}">
+</form>
+</div>
+<div class="col-md-3"></div>
 </div>
 {% endblock %}
