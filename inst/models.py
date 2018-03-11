@@ -69,10 +69,6 @@ class Profile(models.Model):
 		got_profiles = cls.objects.filter(username__icontains = name).all()
 		return got_profiles
 
-
-  
-
-
 class Comment(models.Model):
 	user = models.ForeignKey(User, null= True)
 	pic = models.ForeignKey(Pic, null= True)
