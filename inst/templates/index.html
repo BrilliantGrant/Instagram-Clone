@@ -7,81 +7,85 @@
 {{ block.super }}
 
 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+}
 
-<div class="container">
-<div class="master-card" >
-    <div class="master-card-header">
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
 
-        {% for pic in pic_posts%}
-        <h2>{{pic.user}}</h2>
-      <img src="{{pic.pic.url}}" class="master-card" style="width:100px;height:100px;border-radius:50%;padding:15px; "><strong style="">Brilliant</strong>
-      
-      <a class="master-card-user-name" href="#">{{all.pic_name}}</a>
-     
+.container {
+    padding: 2px 16px;
 
+}
+</style>
+</head>
+<body>
+
+<h2>Card</h2>
+ {% for pic in pic_posts%}
+
+<div class="card" style="margin-left: 200px">
+  <div class="container" style="border-top: 1px solid #EEEEEE; width: 515px; height: 100px"><br><br>
+      <h2><!-- {{pic.user}} --></h2>
+      <img src="{{pic.pic.url}}" class="master-card" style="width:100px;height:100px;border-radius:50%;padding:15px; margin-top: -60px"><strong style="margin-top: 60px">{{pic.user}}</strong>
+
+  </div>
+       
+  <img src="{{pic.pic.url}}" alt="Avatar" style="width:500px; width: 500px">
+  <div class="container" style="margin: 50px">
+<div class="row">
+  <div class="col-md-3">
+    <i onclick="myFunction(this)" class="fa fa-heart" style="font-size:28px;  background-color: white ; margin-top: -200px; margin-left: -30px"></i>
+     <a href="{%url 'comment' id=pic.pk %} "><i class="fa fa-comment-o" style="font-size:24px; margin-left: 20px"></i></a>
+    </div>
+    
     
    
-    <div class="master-card-image">
-      <img src= "{{pic.pic.url}}" height="500px" width="500px" />
-    </div>    
-
-     
-    <div class="master-card-content">
-      <!-- <p class="Likes">{{up.likes }} likes</p> -->
-      <p><a class="Instagram-card-content-user">
-      <!-- <href="https://www.instagram.com/rogersbase/">peter</a>  {{pic_caption}} 🎉</p>
-      <p class="comments">Veiw 12 coments</p> -->
-     <!--  <br><a class="user-comment" href="https://www.instagram.com/chrisobrien64/">chrisob</a> NO way men just do </br>
-      <br><a class="user-comment" href="https://www.instagram.com/artie_mcparty/">patel</a> Aweome buddy.</br> -->
-        <div class="well" style="width: 500px; margin-top: -20px">
-          <div>
-     <i onclick="myFunction(this)" class="fa fa-heart" style="font-size:28px; margin-right: 15px; background-color: white"></i> 
-     <a href="" class="fa fa-camera" style="font-size:28px; float: right;">
-     <a href="" class="fa fa-comment-o" style="font-size:28px;"></i>
-
-   
+ 
+    <div class="col-md-3">
+    <i class="fa fa-bookmark-o" style="font-size:24px; margin-right: 180px "></i>
      </div>
-      
-     <a class="user-comment" href="">whooops</a> No way  My book of this month arrived 😍😍😍 This time it's a #norsk #author #jonesbo. I have planned to read his #HarryHole #crime series and #Flaggermusmannen is the first book of this series. </br><br>
-       <div class="master-card-time" style="font-weight: bold"> {{pic.pub_date | timesince}}</div>
-
-     <hr>
-         <div style="width: 100px" class="fb-comments" data-href={{request.build_absolute_url}}></div>
-
-   <div class="mt-4 border-t border-grey-light mx-4 py-4" >
-  </div>
-</div>
-      </div>
-
    </div>
-    <!--   <a class="footer-action-icons"href="#"><i class="fa fa-heart-o"></i></a> -->
-       
-    </div>
-  </a>
-</div>
+ 
+<br>
+  <div class="text-xs px-6 py-4 uppercase text-grey" style=" margin-left: -30px"> {{pic.pub_date | timesince}} </div>
+  <hr style="width: 400px; margin-left: 0px">
+  <div class="mt-4 border-t border-grey-light mx-4 py-4">
+    <textarea class="w-full no-outline h-6" style="width: 400px; border-left: none;border-right: none;border-bottom: none; border-top: none" placeholder="Add a comment"></textarea>
 
+    <div>
+      {% for comment in comments.all %}
+      <p> {{comment.user}} </p>
+      <p>{{comment.comments}}</p>
+    {% endfor %}
+       </div>
+  </div>
+  
+      </div>
+</div>
+  </div>
+
+</div>
+ 
+</body>
 <script>
 function myFunction(x) {
     x.classList.toggle("fa-thumbs-down");
 }
 </script>
-
-
-    {% endfor %}
-  
- </div>
-</div>
-</div>
+{% endfor %}
+</html> 
 
 
 

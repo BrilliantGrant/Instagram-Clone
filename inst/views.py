@@ -1,6 +1,6 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
-from . forms import ProfileUploadForm
+from . forms import ProfileUploadForm,CommentForm
 from django.http  import HttpResponse
 from . models import Pic ,Profile, Likes, Follow, Comment,Unfollow
 from django.conf import settings
@@ -8,30 +8,41 @@ from django.conf import settings
 
 # Create your views here.
 
+
+# def login_redirect(request):
+#     return redirect('inst/login/')
+
+@login_required(login_url='/accounts/login/')
 def index(request):
       title = 'Instagram'
       pic_posts = Pic.objects.all()
+      comments = Comment.objects.all()
+
       print(pic_posts)
-      return render(request, 'index.html', {"title":title,"pic_posts":pic_posts})
+      return render(request, 'index.html', {"title":title,"pic_posts":pic_posts, "comments":comments})
+
 
 @login_required(login_url='/accounts/login/')
-def comment(request):
-	username = current_user.username
-	comments = Comment.objects.filter(image_id=image_id)
+def comment(request,id):
+	
+	post = get_object_or_404(Pic,id=id)	
 	current_user = request.user
+	print(post)
 
 	if request.method == 'POST':
 		form = CommentForm(request.POST)
 
 		if form.is_valid():
-			comment = form.save(commit = False)
-			comment.user_id = current_user
+			comment = form.save(commit=False)
+			comment.user = current_user
+			comment.pic = post
 			comment.save()
-			return redirect(timeline)
-		else:
-			form = CommentForm()
+			return redirect('index')
+	else:
+		form = CommentForm()
 
-			return render(request,'my-inst/comment.html',{"form":form})  
+	return render(request,'index.html',{"form":form})  
+
 
 
 @login_required(login_url='/accounts/login/')
@@ -121,4 +132,28 @@ def upload_profile(request):
 
 
     return render(request,'upload_profile.html',{"title":title,"current_user":current_user,"form":form})
+
+
+
+@login_required(login_url='/accounts/login/')
+def send(request):
+    '''
+    View function that displays a forms that allows users to upload images
+    '''
+    current_user = request.user
+
+    if request.method == 'POST':
+
+        form = ImageForm(request.POST ,request.FILES)
+
+        if form.is_valid():
+            image = form.save(commit = False)
+            image.user_key = current_user
+            image.likes +=0
+            image.save() 
+
+            return redirect( timeline)
+    else:
+        form = ImageForm() 
+    return render(request, 'my-inst/send.html',{"form" : form}) 
 

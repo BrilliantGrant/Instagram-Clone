@@ -27,8 +27,8 @@
 
              </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <!-- Adding a search form  -->
-                <form class="navbar-form" role="search" action="{% url 'search_results' %}">
+              
+                 <form class="navbar-form" role="search" action="{% url 'search_results' %}">
 
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search User" name="name">
@@ -38,18 +38,56 @@
                     </div>
 
                 </form>
-                <!-- search form end -->
-            </div>
+              
+             </div>
            
   <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
       <a href="{% url 'profile' %}" id="instTitle" style="color: black; margin-right:20px; font-size:25px;"><span class="glyphicon glyphicon-user"></span></a>
       <a href="{% url 'profile' %}" id="instTitle" style=" color: black;margin-right:20px;font-size:25px;"><span class="glyphicon glyphicon-heart-empty"></span></a>
-      <a href="{% url 'profile' %}"> <i class="fa fa-compass" style="font-size:36px;color:black" href="{% url 'profile' %}"></i></a> </div>
+      <a href="{% url 'profile' %}"> <i class="fa fa-compass" style="font-size:36px;color:black" href="{% url 'profile' %}"></i></a> 
 
+    <div class="col-sm-3 " style="float: right; margin-top: -20px; margin-right: 80px">
+            {% if user.is_authenticated %}
+            <ul>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
+                          <span class="caret"></span>
+                      </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <a href="/">Home</a>
+                  </li>
+                  <li>
+                     <a href="{% url 'upload_profile'%}">Create Profile</a>
+                  </li>
+                  <li>
+                    <a href="/accounts/password/change">Change Password</a>
+                  </li>
+                  <li>
+                    <a href="/logout">Logout</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            {% else %}
+            <li>
+              <a class='btn btn-default' href="/accounts/login">Login</a>
+            </li>
+
+            {% endif %}
+            
+          </div>
+      </div>
+      <!-- search form end -->
 
 
         </div>
+  
     </nav>
 </body>
 
-</html
+</html>
+
+
+
+<!--  -->

@@ -5,13 +5,13 @@
  {{block.super}}
 
 <div class="container">
-    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
-    <div class="col-xs-10 col-sm-10 col-md-5 col-lg-5 col-xl-5">
+    <div class="col-md-3"></div>
+    <div class="col-md-3">
         <h4 style="font-weight:bolder;">Comments</h4>
         {% for comment in pic.comments%}
-        <h5><span style="font-weight:bolder;">@{{comment.user_id}}:</span>&nbsp;&nbsp;{{comment}} </h5> {% endfor %}
+        <h5><span style="font-weight:bolder;">@{{comment.user_id}}:</span> {{comment}} </h5> {% endfor %}
     </div>
-    <div class="col-xs-10 col-sm-10 col-md-5 col-lg-5 col-xl-5">
+    <div class="col-md-3 ">
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %} {% bootstrap_form form%}
             <input type="submit" class="btn btn-primary btn-sm" value="Submit">
@@ -19,9 +19,9 @@
 
         </form>
 
-        <p><a href="{% url 'timeline' %}">Return to Timeline</a></p>
+        <p><a href="{% url 'timeline' %}"> Return to Timeline </a></p>
 
     </div>
-    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+    <div class="col-xs-1"></div>
 </div>
 {% endblock %}

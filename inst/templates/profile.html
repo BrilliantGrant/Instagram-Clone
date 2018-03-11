@@ -1,49 +1,61 @@
-{%extends 'my-inst/base.html'%} {% load bootstrap3 %}
-
-{%block content%}
+{% extends "base.html" %}
+{% block content %}
+  {{block.super}}
+  <title>{{image_id.username}}</title>
 <div class="container">
-
-    <div class='col-md-6'></div>
-    <div class='col-md-6'>
-        <div class="row">
-            <div class="col-md-12 ">
-                
-            </div>
-            <div class="col-md-12">
+  <div class="row">
+      <div class="col-md-12">
                 {%for profile in profile%}
-                <img src={{profile.profile_pic.url}} style="width: 300px; height: 300px">
+                <img src={{profile.profile_pic.url}} style="width: 300px; height: 300px; border-radius: 50%">
+                <div class="well" style="float: right; margin-top: 100px; margin-right: 200px">
+                    <div class="">
+                <h5 style="float: left; margin-left: 20px; font-size: 30px; font-weight: bold; margin-top: -1px">
+                    
 
-                <h5 style="">{{profile.username}}</h5>
-                <p>{{profile.bio}}</p>
-                {% if profile.user == current_user%}
-                <a href="{% url 'send' %}">
-                    <span class="glyphicon glyphicon-plus-sign"></span>
-                 <a href="{% url 'upload_profile'%}"><button class="btn btn-primary">Make changes</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'post' %}">
-                    <span class="glyphicon glyphicon-plus-sign" style="font-size:35px;"></span>
-                </a>
-               <a href="{% url 'upload_profile'%}"><button class="btn btn-primary">Make changes</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'post' %}">
-                    <span class="glyphicon glyphicon-plus-sign" style="font-size:35px;"></span>
-                </a>
-                <h5><span style="font-weight:bolder;"></span>{{followers | length }}</h5>
-                <h5><span</span>{{following | length }}</h5 {% else%} 
-                <a href="{% url 'upload_profile'%}"><button class="btn btn-primary" style="background-color: red">Create Profile</button></a> {% endif %}
-                <hr>
-            </div>
-        </div>
-
-    </div>
+                {{profile.username}}</h5>
+                 <i class="fa fa-gear" style="font-size:24px; float: right;  margin-left: 30px"></i>
+                 <a style="" href="{% url 'upload_profile'%}"><button class="btn btn-primary" style="background-color: #EEEEEE; color: black; float: right; margin-left: 30px; height: 30px">Edit Profile</button></a> 
                 
-            </div>
-        </div>
+             </div>
+             <hr>
+            <!--      <button type="button" name="button" class="following" style="font-weight:700">{{profile.username}}</button> -->
+                  <div class="follow">
+                    <div>
+      <h4 style="float: left;">{{image_id.followers}} followers</h4>
+      </div>
+      <div>
+      <h4 style="float: right;">{{image_id.following }} following</h4>
+      </div>
+    </div>
+
+              <!--   <p>{{profile.bio}}</p> -->
+                <ul>
+                </div>
+   <img src="{{profile.profile.url}}" class="img-responsive" alt="">
+  </ul>
+  
+      <h3>{{image_id.username}}{{image_id.image_caption}}</h3>
+      {% autoescape on %}
+         <!-- <div>{{image_id.bio| safe}}</div> -->
+        {% endautoescape %}
+   
+                 {%endfor%}
+    <div class="col-lg-6">
+        <h1>{{image_id.username}}</h1>
+         
+    <a href="{{image_id.url}}" class="profile-link">{{image_id.url}}</a>
 
     </div>
+  </div>
+
+
+<div class="profile-images row">
+  {%for profile in profile%}
+  
     {%endfor%}
 
- {%endblock%} 
 
-
-
-
+</div>
+</div>
+{% endblock %}
 

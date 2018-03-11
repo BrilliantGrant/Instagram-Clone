@@ -74,8 +74,8 @@ class Profile(models.Model):
 
 
 class Comment(models.Model):
-	user_id = models.ForeignKey(User, null= True)
-	pic_id = models.ForeignKey(Pic, null= True)
+	user = models.ForeignKey(User, null= True)
+	pic = models.ForeignKey(Pic, null= True)
 	comment= models.TextField(blank=True)
 	
 	def __str__(self):
