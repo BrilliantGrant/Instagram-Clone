@@ -48,6 +48,10 @@ As a user of the application i should be able to:
    ```$ python3.6 -m pip install gunicorn```
 
 
+## Specifications
+
+
+
 ## Technologies Used
 
   * Python version 3.6.3
