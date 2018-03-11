@@ -7,7 +7,6 @@ from django.conf import settings
 
 
 # Create your views here.
-
 @login_required(login_url='/accounts/login/')
 def index(request):
       title = 'Instagram'
@@ -38,7 +37,6 @@ def comment(request,id):
 		form = CommentForm()
 
 	return render(request,'index.html',{"form":form})  
-
 
 
 @login_required(login_url='/accounts/login/')
@@ -128,7 +126,6 @@ def upload_profile(request):
 
 
     return render(request,'upload_profile.html',{"title":title,"current_user":current_user,"form":form})
-
 
 
 @login_required(login_url='/accounts/login/')
