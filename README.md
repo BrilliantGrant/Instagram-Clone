@@ -48,3 +48,15 @@ As a user of the application i should be able to:
    ```$ python3.6 -m pip install gunicorn```
 
 
+## Technologies Used
+
+  * Python version 3.6.3
+  * Django version 1.11
+  * Bootstrap 3
+  * Postgres Database
+  * Sqlite
+  * HTML & CSS 
+  * Heroku
+
+
+
