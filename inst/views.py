@@ -8,10 +8,6 @@ from django.conf import settings
 
 # Create your views here.
 
-
-# def login_redirect(request):
-#     return redirect('inst/login/')
-
 @login_required(login_url='/accounts/login/')
 def index(request):
       title = 'Instagram'
