@@ -26,10 +26,10 @@ As a user of the application i should be able to:
 
 * Install python version 3.6.3
 * Install Heroku that helps to deploy your application.
-* Clone 
+* Clone https://github.com/BrilliantGrant/Instagram-Clone.git
 * Atleast have a computer or a laptop
 * Have an internet connection
-* Visit  
+* Visit https://bri-instagram.herokuapp.com/
 
 * install Django
 
