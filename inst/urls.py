@@ -2,7 +2,6 @@ from django.conf.urls import url
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
-# from inst.views import login_redirect
 
 urlpatterns=[
     # url(r'^$', views.login_redirect, name='login_redirect'),
