@@ -1,13 +1,7 @@
-
-
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
 {{ block.super }}
-
-
-
 
 <!DOCTYPE html>
 <html>
@@ -34,59 +28,51 @@
 
 <h2>Card</h2>
  {% for pic in pic_posts%}
-
 <div class="card" style="margin-left: 200px">
   <div class="container" style="border-top: 1px solid #EEEEEE; width: 515px; height: 100px"><br><br>
       <h2><!-- {{pic.user}} --></h2>
       <img src="{{pic.pic.url}}" class="master-card" style="width:100px;height:100px;border-radius:50%;padding:15px; margin-top: -60px"><strong style="margin-top: 60px">{{pic.user}}</strong>
-
   </div>
-       
-  <img src="{{pic.pic.url}}" alt="Avatar" style="width:500px; width: 500px">
-  <div class="container" style="margin: 50px">
+
+<img src="{{pic.pic.url}}" alt="Avatar" style="width:500px; width: 500px">
+<div class="container" style="margin: 50px">
 <div class="row">
   <div class="col-md-3">
     <i onclick="myFunction(this)" class="fa fa-heart" style="font-size:28px;  background-color: white ; margin-top: -200px; margin-left: -30px"></i>
-     <a href="{%url 'comment' id=pic.pk %} "><i class="fa fa-comment-o" style="font-size:24px; margin-left: 20px"></i></a>
-    </div>
-    
-    
-   
- 
+     <a href="{% url 'comment' id=pic.pk %} "><i class="fa fa-comment-o" style="font-size:24px; margin-left: 20px"></i></a>
+  </div>
+
     <div class="col-md-3">
-    <i class="fa fa-bookmark-o" style="font-size:24px; margin-right: 180px "></i>
-     </div>
-   </div>
+    <i class="fa fa-bookmark-o" style="font-size:24px; margin-right: 180px "></i></div>
+</div>
  
-<br>
-  <div class="text-xs px-6 py-4 uppercase text-grey" style=" margin-left: -30px"> {{pic.pub_date | timesince}} </div>
+ <br>
+<div class="text-xs px-6 py-4 uppercase text-grey" style=" margin-left: -30px"> {{pic.pub_date | timesince}} </div>
   <hr style="width: 400px; margin-left: 0px">
   <div class="mt-4 border-t border-grey-light mx-4 py-4">
-    <textarea class="w-full no-outline h-6" style="width: 400px; border-left: none;border-right: none;border-bottom: none; border-top: none" placeholder="Add a comment"></textarea>
+  <textarea class="w-full no-outline h-6" style="width: 400px; border-left: none;border-right: none;border-bottom: none; border-top: none" placeholder="Add a comment"></textarea>
 
-    <div>
-      {% for comment in comments.all %}
-      <p> {{comment.user}} </p>
-      <p>{{comment.comments}}</p>
-    {% endfor %}
+<div>
+{% for comment in comments.all %}
+<p> {{comment.user}} </p>
+<p>{{comment.comments}}</p>
+{% endfor %}
        </div>
   </div>
-  
-      </div>
 </div>
-  </div>
-
 </div>
- 
+</div>
+</div> 
 </body>
+
+
 <script>
 function myFunction(x) {
     x.classList.toggle("fa-thumbs-down");
 }
 </script>
+
 {% endfor %}
+
 </html> 
-
-
-
 {% endblock %}
