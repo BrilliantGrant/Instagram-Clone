@@ -53,11 +53,11 @@
   <textarea class="w-full no-outline h-6" style="width: 400px; border-left: none;border-right: none;border-bottom: none; border-top: none" placeholder="Add a comment"></textarea>
 
 <div>
-{% for comment in comments.all %}
+{% for comment in pic.comment.all %}
 <p> {{comment.user}} </p>
-<p>{{comment.comments}}</p>
+<p>{{comment.comment}}</p>
 {% endfor %}
-       </div>
+</div>
   </div>
 </div>
 </div>

@@ -71,8 +71,8 @@ class Profile(models.Model):
 
 class Comment(models.Model):
 	user = models.ForeignKey(User, null= True)
-	pic = models.ForeignKey(Pic, null= True)
-	comment= models.TextField(blank=True)
+	pic = models.ForeignKey(Pic, null= True,related_name='comment')
+	comment= models.TextField( blank=True)
 	
 	def __str__(self):
 		return self.comment
