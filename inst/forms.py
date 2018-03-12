@@ -20,4 +20,4 @@ class CommentForm(forms.ModelForm):
 	class Meta:
 		model = Comment
 		
-		exclude = ['user_id','pic_id',]
+		exclude = ['user','pic',]

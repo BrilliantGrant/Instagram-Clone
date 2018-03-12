@@ -36,7 +36,7 @@ def comment(request,id):
 	else:
 		form = CommentForm()
 
-	return render(request,'index.html',{"form":form})  
+	return render(request,'comment.html',{"form":form})  
 
 
 @login_required(login_url='/accounts/login/')
