@@ -11,10 +11,10 @@ from django.conf import settings
 def index(request):
       title = 'Instagram'
       pic_posts = Pic.objects.all()
-      comments = Comment.objects.all()
+      # comments = Comment.objects.all()
 
       print(pic_posts)
-      return render(request, 'index.html', {"title":title,"pic_posts":pic_posts, "comments":comments})
+      return render(request, 'index.html', {"title":title,"pic_posts":pic_posts})
 
 
 @login_required(login_url='/accounts/login/')
@@ -69,31 +69,30 @@ def like(request,pic_id):
 	save_like()
 	return redirect(timeline)
 
-@login_required(login_url='/accounts/login/')
-def search_pic(request):
+# @login_required(login_url='/accounts/login/')
+# def search_pic(request):
 
-	if 'pic' in request.GET and request.GET["pic"]:
-		search_pic = request.GET.get("pic")
-		got_users = Profile.find_profile(search_pic)
-		message =f"{search_pic}"
+# 	if "pic" in request.GET and request.GET["pic"]:
+# 		search_pic = request.GET.get("pic")
+# 		got_users = Profile.find_profile(search_pic)
+# 		message =f"{search_pic}"
 
-		return render(request,'my-inst/search_pic.html',{"got_users":got_users,"message":message})
-	else:
-		message = "Invalid username"
-		return render(request,'my-inst/search_pic.html',{"message":message})
+# 		return render(request,'my-inst/search_pic.html',{"got_users":got_users,"message":message})
+# 	else:
+# 		message = "Invalid username"
+# 		return render(request,'my-inst/search_pic.html',{"message":message})
 
 def search_results(request):
-
     if 'pic' in request.GET and request.GET["pic"]:
         search_term = request.GET.get("pic")
-        searched_images = Images.search_by_title(search_term)
+        searched_profiles = Profile.search_profile(search_term)
         message = f"{search_term}"
 
-        return render(request, 'my-inst/search_pic.html',{"message":message,"pics": searched_pics})
+        return render(request, 'search_pic.html',{"message":message,"pics": searched_profiles})
 
     else:
         message = "You haven't searched for any term"
-        return render(request, 'my-inst/search_pic.html',{"message":message})
+        return render(request, 'search_pic.html',{"message":message})
 
 
 @login_required(login_url='/accounts/login/')

@@ -65,8 +65,8 @@ class Profile(models.Model):
 		self.save()
 
 	@classmethod
-	def search_profile(cls,name):
-		got_profiles = cls.objects.filter(username__icontains = name).all()
+	def search_profile(cls,search_term):
+		got_profiles = cls.objects.filter(first_name__icontains = search_term)
 		return got_profiles
 
 class Comment(models.Model):
