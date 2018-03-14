@@ -28,7 +28,7 @@
 
 <h2>Card</h2>
  {% for pic in pic_posts%}
-<div class="card" style="margin-left: 200px">
+<div class="card" style="margin-left: 200px; margin-top: 80px">
   <div class="container" style="border-top: 1px solid #EEEEEE; width: 515px; height: 100px"><br><br>
       <h2><!-- {{pic.user}} --></h2>
       <img src="{{pic.pic.url}}" class="master-card" style="width:100px;height:100px;border-radius:50%;padding:15px; margin-top: -60px"><strong style="margin-top: 60px">{{pic.user}}</strong>
@@ -54,15 +54,22 @@
 
 <div>
 {% for comment in pic.comment.all %}
-<p> {{comment.user}} </p>
+<div class="row">
+  <div class="col-md-1">
+<p style=" font-weight: bold;"> {{comment.user}}</p>
+</div>
+<div class="col-md-4" style="margin-left: -25px">
 <p>{{comment.comment}}</p>
+</div>
+</div>
 {% endfor %}
 </div>
   </div>
 </div>
 </div>
 </div>
-</div> 
+</div>
+
 </body>
 
 
@@ -74,5 +81,31 @@ function myFunction(x) {
 
 {% endfor %}
 
-</html> 
+</html>
+
+
+<div style="border:1px solid #EEEEEE;width:300px;height:350px;overflow:auto; float: right;margin-top: -5000px; margin-right: 200px ; border-left: none; border-top: none;">
+ <div style="margin-top: -5px"> <strong style="color: #BDBDBD">Stories</strong><strong style="float: right;">Watch All</strong></div>
+ <!--   {% for pic in pic_posts%} -->
+
+   <div>
+  <img src="{{pic.pic.url}}" class="master-card" style="width:100px;height:100px;border-radius:50%;padding:15px; "><strong style="margin-top: 60px">{{pic.user}}</strong>
+  <p style="margin-left: 80px; margin-top: 40px color:  #BDBDBD">{{pic.pub_date | timesince}} </p>
+</div>
+<!--   {% endfor %} -->
+This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text.This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text.
+This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text.
+This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text.
+This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text.
+text.
+
+
+</div><br>
+
+
 {% endblock %}
+
+
+
+
+
