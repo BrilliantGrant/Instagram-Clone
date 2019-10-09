@@ -11,7 +11,7 @@ class Pic(models.Model):
     pic_caption = models.TextField(null = True)
     pub_date = models.DateTimeField(auto_now_add=True,null=True)
     # profile = models.ForeignKey(Profile, null=True) 
-    comments = models.IntegerField(default=0)
+
 
 
     def __str__(self):
