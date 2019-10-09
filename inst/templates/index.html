@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{{ block.super }}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+    padding: 2px 16px;
+
+}
+
+}
+</style>
+</head>
+<body>
+
+<h2>Card</h2>
+ {% for pic in pic_posts%}
+<div class="card" style="margin-left: 200px; margin-top: 80px">
+  <div class="container" style="border-top: 1px solid #EEEEEE; width: 515px; height: 100px"><br><br>
+      <h2><!-- {{pic.user}} --></h2>
+      <img src="{{pic.pic.url}}" class="master-card" style="width:100px;height:100px;border-radius:50%;padding:15px; margin-top: -60px"><strong style="margin-top: 60px"><a style="color: black" href="{% url 'profile' %}">{{pic.user}}</strong>
+  </div>
+
+<img src="{{pic.pic.url}}" alt="Avatar"  style="width:514px; ">
+<div class="container" style="margin: 50px">
+<div class="row">
+  <div class="col-md-3">
+    <i onclick="myFunction(this)" class="fa fa-heart" style="font-size:28px;  background-color: white ; margin-top: -200px; margin-left: -30px"></i>
+     <a href="{% url 'comment' id=pic.pk %} "><i class="fa fa-comment-o" style="font-size:24px; margin-left: 20px"></i></a>
+  </div>
+
+    <div class="col-md-3">
+    <i class="fa fa-bookmark-o" style="font-size:24px; margin-right: 180px "></i></div>
+</div>
+ 
+ <br>
+<div class="text-xs px-6 py-4 uppercase text-grey" style=" margin-left: -30px"> {{pic.pub_date | timesince}} </div>
+  <hr style="width: 400px; margin-left: 0px">
+  <div class="mt-4 border-t border-grey-light mx-4 py-4">
+  <textarea class="w-full no-outline h-6" style="width: 400px; border-left: none;border-right: none;border-bottom: none; border-top: none" placeholder="Add a comment"></textarea>
+
+<div>
+{% for comment in pic.comment.all %}
+<div class="row">
+  <div class="col-md-1">
+<p style=" font-weight: bold; "><a style="color: black" href="/"> {{comment.user}}</p>
+</div>
+<div class="col-md-4" style="margin-left: -25px">
+<p>{{comment.comment}}</p>
+</div>
+</div>
+{% endfor %}
+</div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+
+
+<script>
+function myFunction(x) {
+    x.classList.toggle("fa-thumbs-down");
+}
+</script>
+
+{% endfor %}
+
+</html>
+
+
+<div style="border:1px solid #EEEEEE;width:300px;height:350px;overflow:auto; float: right;margin-top: -5270px; margin-right: 200px ; border-left: none; border-top: none;">
+ <div style="margin-top: -5px"> <strong style="color: #BDBDBD">Stories</strong><strong style="float: right;">Watch All</strong></div>
+ <!--   {% for pic in pic_posts%} -->
+
+   <div>
+  <img src="{{pic.pic.url}}" class="master-card" style="width:100px;height:100px;border-radius:50%;padding:15px; "><strong style="margin-top: 60px">{{pic.user}}</strong>
+  <p style="margin-left: 80px; margin-top: 40px color:  #BDBDBD">{{pic.pub_date | timesince}} </p>
+</div>
+<!--   {% endfor %} -->
+This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text.This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text.
+This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text.
+This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text.
+This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text.
+text.
+
+
+</div><br>
+
+
+{% endblock %}
+
+
+
+
+

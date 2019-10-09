@@ -1,0 +1,25 @@
+{% extends 'my-inst/base.html'%} 
+{% load staticfiles%}
+{% load bootstrap3 %} 
+{% block content %}
+ {{block.super}}
+
+<div class="container">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+    <h4>Comments</h4>
+    {% for comment in comments%}
+    <h5><span>{{comment.user_id}}:</span>{{comment}} </h5> {% endfor %}
+    </div>
+
+    <div class="col-md-6">
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %} {% bootstrap_form form%}
+    <input type="submit" class="btn btn-primary btn-sm" value="Submit">
+    <input type="hidden" name="next" value="{{next}}">
+    </form>
+
+    <p><a href="{% url 'timeline' %}">Previous</a></p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'my-inst/base.html'%}
+{% load staticfiles %}
+{%load bootstrap3 %}
+{% block styles %}
+{{block.super}}
+
+<link rel="stylesheet" href="{% static 'css/timeline.css'%}"> 
+{% endblock %}
+
+{% block content %} 
+{{block.super}}
+<div class ="container">
+<div class="row">
+<div class="col-md-6">
+{% for pic in timeline_pic%}
+<div class="well">
+<div><h5>{{pic.user_key}}</h5></div>
+<img src={{pic.pic.url}} id="timeline_pic">
+<div> <a href="{% url 'like' pic.id %}"></a>
+<a href="{% url 'comment' pic.id %}">
+</a><span class="glyphicon glyphicon-bookmark"></span>
+<h5 >{{pic.likes}}likes</h5>
+<div >
+    <h5>{{pic.comments_number}} comments<a href="{% url 'comment' pic.id %}"> View </a></h5>
+        </div>
+            <h5>{{pic.pub_date | date}} </h5>
+                <hr>
+                <a href="{% url 'comment' pic.id %}"> Comment</a>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+{% block scripts %}
+{{block.super}}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+<script type="text/javascript" src="{%static 'js/timeline.js'%}"></script>
+{% endblock %}

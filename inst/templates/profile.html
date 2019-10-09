@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block content %}
+{{block.super}}
+  
+<title>{{image_id.username}}</title>
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+    {%for profile in profile%}
+<img src={{profile.profile_pic.url}} style="width: 300px; height: 300px; border-radius: 50%; margin-top: 100px;margin-left: 100px ">
+<div class="well" style="float: right; margin-top: 170px; margin-right: 300px">
+<div class="">
+<h5 style="float: left; margin-left: 20px; font-size: 30px; font-weight: bold; margin-top: -1px">
+    {{profile.username}}</h5>
+<i class="fa fa-gear" style="font-size:24px; float: right;  margin-left: 30px"></i>
+<a style="" href="{% url 'upload_profile'%}"><button class="btn btn-primary" style="background-color: #EEEEEE; color: black; float: right; margin-left: 30px; height: 30px">Edit Profile</button></a> 
+</div>
+             
+<hr>
+<div class="profile">
+<div><h4 style="float: left; margin-left: -70px">{{image_id.followers}} followers : <strong>500</h4></stong></h4></div>
+<div><h4 style="float: right;">{{image_id.following }} following : <strong>500</h4></stong></h4></div>
+<button style="margin-left: 130px; background-color:#1E88E5; width: 70px; margin-top: 10px">follow</button>
+</div>
+
+
+<ul>
+</div>
+
+<img src="{{profile.profile.url}}" class="img-responsive" alt="">
+</ul>
+<h3>{{image_id.username}}{{image_id.image_caption}}</h3>
+
+{%endfor%}
+<div class="col-md-6">
+<h1>{{image_id.username}}</h1>
+<a href="{{image_id.url}}" class="profile-link">{{image_id.url}}</a></div>
+</div>
+<div class="profile-images row">
+
+ 
+
+
+</div>
+</div>
+<strong style="text-align: center; font-size: 30px">Recent posts</strong>
+<div class="row" ">
+	<div class="col-md-4">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_OmXlEVor0bSPrK25UaK9ZW8GyAvGgXaH6JiwwsKT9LEt6ae_" style="width: 350px; height: 300px">
+</div>
+
+<div class="col-md-4">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/20031012-002-houses-st-albans.jpg/250px-20031012-002-houses-st-albans.jpg" style="width: 350px; height: 300px">
+</div>
+<div class="col-md-4" >
+<img src="https://i.ytimg.com/vi/lIm5j9uVEKw/maxresdefault.jpg" style="width: 400px; height: 300px">
+</div>
+
+</div><br>
+
+<div class="row" ">
+	<div class="col-md-4">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-EcfgJl7XxSmu5VwQnEGJGRT3HZsTqg4eL4xrl63Hox1h0KVs" style="width: 350px; height: 300px">
+</div>
+
+<div class="col-md-4">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqBuWipylT8wojfnEUtCkCpDZGzdXRaPYZ_F4W3kjeng_jvEDF7w" style="width: 350px; height: 300px">
+</div>
+<div class="col-md-4" >
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUosn2c1wQzsoT0qKqTseQzOTAoSQvMbtax9Awn_pmcbSasUOB" style="width: 400px; height: 300px">
+</div>
+
+</div>
+</div>
+{% endblock %}
+

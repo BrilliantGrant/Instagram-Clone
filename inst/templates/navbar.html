@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+   
+    <nav class="navbar navbar-default navbar-fixed-top " style="background-color:#EEEEEE; border:#EEEEEE; padding:10px;">
+        <div class="container-fluid">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                <a href="{% url 'timeline' %}">
+                    <img style="height:30px; width:30px; margin-right: 30px;" src="https://seeklogo.com/images/I/instagram-new-2016-glyph-logo-84CB825424-seeklogo.com.png">
+                </a>
+
+                <a href="{% url 'timeline' %}">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2000px-Instagram_logo.svg.png" width=100px height=35px alt="INSTAGRAM"> </a>
+                </a>
+
+
+
+             </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              
+                 <form class="navbar-form" role="search" action="{% url 'search_results' %}">
+
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search User" name="pic">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search" ></i></button>
+                        </div>
+                    </div>
+
+                </form>
+              
+             </div>
+           
+  <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+      <a href="{% url 'profile' %}" id="instTitle" style="color: black; margin-right:20px; font-size:25px;"><span class="glyphicon glyphicon-user"></span></a>
+      <a href="{% url 'profile' %}" id="instTitle" style=" color: black;margin-right:20px;font-size:25px;"><span class="glyphicon glyphicon-heart-empty"></span></a>
+      <a href="{% url 'profile' %}"> <i class="fa fa-compass" style="font-size:36px;color:black" href="{% url 'profile' %}"></i></a> 
+
+    <div class="col-sm-3 " style="float: right; margin-top: -20px; margin-right: 80px">
+            {% if user.is_authenticated %}
+            <ul>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
+                          <span class="caret"></span>
+                      </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <a href="/">Home</a>
+                  </li>
+                  <li>
+                     <a href="{% url 'upload_profile'%}">Create Profile</a>
+                  </li>
+                  <li>
+                    <a href="/accounts/password/change">Change Password</a>
+                  </li>
+                  <li>
+                    <a href="/logout">Logout</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            {% else %}
+            <li>
+              <a class='btn btn-default' href="/accounts/login">Login</a>
+            </li>
+          </ul>
+            {% endif %}
+            
+          </div>
+      </div>
+      <!-- search form end -->
+
+
+        </div>
+  
+    </nav>
+</body>
+
+</html>
+
+
+
+<!--  -->improve conv,keep time,provide secure way.
